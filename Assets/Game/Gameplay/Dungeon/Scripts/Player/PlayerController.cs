@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     [SerializeField] private AudioEvent deathSound = null;
     [SerializeField] private AudioEvent recieveHitSound = null;
     [SerializeField] private AudioEvent pickUpSound = null;
+    [SerializeField] private Transform cameraTransform = null;  // Cámara asignada
 
     private PlayerInputController inputController = null;
 
@@ -100,21 +101,28 @@ public class PlayerController : MonoBehaviour, IDamagable
         velocityY = !character.isGrounded ? -Physics.gravity.magnitude : 0f;
     }
 
-    private void Movement()
+    
+
+private void Movement()
+{
+    direction = new Vector3(inputController.Move.x, 0f, inputController.Move.y).normalized;
+
+    if (direction.magnitude > Mathf.Epsilon)
     {
-        direction = new Vector3(inputController.Move.x, 0f, inputController.Move.y).normalized;
+        // Direccion relativa al jugador (ya que no queremos que la cámara controle la dirección)
+        Vector3 moveDir = bodyTransform.forward * direction.z + bodyTransform.right * direction.x;
+        moveDir.y = velocityY;
 
-        if (direction.magnitude > Mathf.Epsilon)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float characterAngle = Mathf.SmoothDampAngle(bodyTransform.eulerAngles.y, targetAngle, ref turnSmoothTime, turnSmoothVelocity);
-
-            bodyTransform.rotation = Quaternion.Euler(0f, characterAngle, 0f);
-
-            direction.y = velocityY;
-            character.Move(currentSpeed * Time.deltaTime * direction);
-        }
+        character.Move(currentSpeed * Time.deltaTime * moveDir);
     }
+    else
+    {
+        // Aplica gravedad si no hay movimiento
+        character.Move(new Vector3(0, velocityY, 0) * Time.deltaTime);
+    }
+}
+
+
 
     private void UpdateAnimation()
     {
