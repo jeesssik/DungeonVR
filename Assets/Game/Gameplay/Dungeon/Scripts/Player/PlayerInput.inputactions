@@ -14,6 +14,14 @@
                     "interactions": "",
                     "initialStateCheck": true
                 },
+                 {
+            "name": "Look",
+            "type": "Value",
+            "id": "a14bc90b-d2f4-4726-9f3e-bb3fce4172a3",
+            "expectedControlType": "Vector2",
+            "processors": "",
+            "interactions": ""
+        },
                 {
                     "name": "PickItem",
                     "type": "Button",

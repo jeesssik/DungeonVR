@@ -37,6 +37,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""a14bc90b-d2f4-4726-9f3e-bb3fce4172a3"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""PickItem"",
                     ""type"": ""Button"",
                     ""id"": ""560e6e4b-2b7f-420c-9b43-172d8cbea3ad"",
@@ -895,6 +904,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_PickItem = m_Player.FindAction("PickItem", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
@@ -982,6 +992,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_PickItem;
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_PauseGame;
@@ -994,6 +1005,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         private @PlayerInput m_Wrapper;
         public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @PickItem => m_Wrapper.m_Player_PickItem;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
@@ -1013,6 +1025,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Look.started += instance.OnLook;
+            @Look.performed += instance.OnLook;
+            @Look.canceled += instance.OnLook;
             @PickItem.started += instance.OnPickItem;
             @PickItem.performed += instance.OnPickItem;
             @PickItem.canceled += instance.OnPickItem;
@@ -1041,6 +1056,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
             @PickItem.started -= instance.OnPickItem;
             @PickItem.performed -= instance.OnPickItem;
             @PickItem.canceled -= instance.OnPickItem;
@@ -1245,6 +1263,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
         void OnPickItem(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);

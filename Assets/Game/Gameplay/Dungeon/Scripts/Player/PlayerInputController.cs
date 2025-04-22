@@ -1,5 +1,4 @@
 using System;
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,9 +25,10 @@ public class PlayerInputController : MonoBehaviour
     private Action onPressAction2 = null;
     private Action onCancelAction1 = null;
     private Action onCancelAction2 = null;
+public Vector2 Look { get => GetLookValue(); }
 
     public Vector2 Move { get => GetMoveValue(); }
-    public FSM_INPUT CurrentInputState { get => currentInputState; }
+        public FSM_INPUT CurrentInputState { get => currentInputState; }
 
     public void Init(Action onPause, Action onInvetory, Action onPick, Action<bool> onRun, Action onChangeWeapons,
         Action onPressAction1, Action onPressAction2, Action onCancelAction1, Action onCancelAction2)
@@ -148,5 +148,14 @@ public class PlayerInputController : MonoBehaviour
         if (inputAction == null) return Vector2.zero;
 
         return inputAction.Player.Move.ReadValue<Vector2>();
+    }
+
+
+
+    private Vector2 GetLookValue()  // Nuevo: obtener los valores de rotación del mouse o cámara
+    {
+        if (inputAction == null) return Vector2.zero;
+
+        return inputAction.Player.Look.ReadValue<Vector2>();
     }
 }

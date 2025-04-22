@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour, IDamagable
 {
@@ -21,14 +21,12 @@ public class PlayerController : MonoBehaviour, IDamagable
     [SerializeField] private Transform cameraTransform = null;  // Cámara asignada
 
     private PlayerInputController inputController = null;
-
     private CharacterController character = null;
     private Animator anim = null;
     private Coroutine aimRotationCoroutine = null;
 
     private Vector3 direction = Vector3.zero;
     private int currentLife = 0;
-    private float turnSmoothTime = 0f;
     private float velocityY = 0f;
     private float currentSpeed = 0f;
     private bool isDefending = false;
@@ -37,12 +35,21 @@ public class PlayerController : MonoBehaviour, IDamagable
     private Action onOpenPausePanel = null;
     private Action<int, int> onUpdateLife = null;
     private Action onPlayerDeath = null;
+        public Transform cameraPivot;           // CameraPivot
+
+    [Header("Settings")]
+    public float movementSpeed = 5f;
+    public float mouseSensitivity = 2f;
+    public float verticalRotationLimit = 80f;
+
+    private float verticalRotation = 0f;
+
+
 
     private void Awake()
     {
         character = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
-
         inputController = GetComponent<PlayerInputController>();
     }
 
@@ -60,9 +67,12 @@ public class PlayerController : MonoBehaviour, IDamagable
     private void Update()
     {
         ApplyGravity();
+        HandleRotation();  // Rotación del cuerpo
+        HandleCameraRotation();  // Rotación de la cámara
         Movement();
-
         UpdateAnimation();
+         HandleMovement();
+        HandleMouseLook();
     }
 
     public void Init(Action onOpenPausePanel, Action<int, int> onUpdateLife, Action onPlayerDeath)
@@ -75,9 +85,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     public void ResetPlayer(Vector3 resetPosition)
     {
         character.enabled = false;
-
         bodyTransform.SetPositionAndRotation(resetPosition, Quaternion.identity);
-
         character.enabled = true;
     }
 
@@ -101,28 +109,74 @@ public class PlayerController : MonoBehaviour, IDamagable
         velocityY = !character.isGrounded ? -Physics.gravity.magnitude : 0f;
     }
 
-    
-
-private void Movement()
-{
-    direction = new Vector3(inputController.Move.x, 0f, inputController.Move.y).normalized;
-
-    if (direction.magnitude > Mathf.Epsilon)
+    private void HandleRotation() // Controla la rotación del cuerpo
     {
-        // Direccion relativa al jugador (ya que no queremos que la cámara controle la dirección)
-        Vector3 moveDir = bodyTransform.forward * direction.z + bodyTransform.right * direction.x;
-        moveDir.y = velocityY;
+        // El cuerpo rota solo si hay movimiento horizontal o vertical
+        if (Mathf.Abs(inputController.Move.x) > Mathf.Epsilon || Mathf.Abs(inputController.Move.y) > Mathf.Epsilon)
+        {
+            Vector3 moveDirection = new Vector3(inputController.Move.x, 0f, inputController.Move.y).normalized;
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            bodyTransform.rotation = Quaternion.Slerp(bodyTransform.rotation, targetRotation, turnSmoothVelocity * Time.deltaTime);
+        }
+    }
+    void HandleMovement()
+    {
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
 
+        // Movimiento relativo al cuerpo, NO a la cámara
+        Vector3 inputDirection = new Vector3(h, 0f, v);
+        Vector3 worldDirection = bodyTransform.TransformDirection(inputDirection);
+        character.Move(worldDirection * movementSpeed * Time.deltaTime);
+    }
+
+ void HandleMouseLook()
+    {
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+        // Rotación horizontal: cuerpo del jugador
+        bodyTransform.Rotate(Vector3.up * mouseX);
+
+        // Rotación vertical: cámara (con clamp)
+        verticalRotation -= mouseY;
+        verticalRotation = Mathf.Clamp(verticalRotation, -verticalRotationLimit, verticalRotationLimit);
+        cameraPivot.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+    }
+  private float cameraPitch = 0f;
+
+private void HandleCameraRotation()
+{
+    Vector2 lookInput = inputController.Look;
+
+    // Rotación vertical (eje X)
+    float lookY = lookInput.y * 2f * Time.deltaTime;
+    cameraPitch -= lookY;
+    cameraPitch = Mathf.Clamp(cameraPitch, -80f, 80f);
+
+    cameraTransform.localEulerAngles = new Vector3(cameraPitch, 0f, 0f);
+
+    // Rotación horizontal (eje Y) del *pivote* o del cuerpo, NO la cámara
+    float lookX = lookInput.x * 2f * Time.deltaTime;
+    bodyTransform.Rotate(Vector3.up * lookX);
+}
+
+
+   private void Movement()
+{
+    Vector3 inputDirection = new Vector3(inputController.Move.x, 0f, inputController.Move.y).normalized;
+
+    if (inputDirection.magnitude >= 0.1f)
+    {
+        Vector3 moveDir = bodyTransform.TransformDirection(inputDirection);
+        moveDir.y = velocityY;
         character.Move(currentSpeed * Time.deltaTime * moveDir);
     }
     else
     {
-        // Aplica gravedad si no hay movimiento
-        character.Move(new Vector3(0, velocityY, 0) * Time.deltaTime);
+        character.Move(Vector3.up * velocityY * Time.deltaTime);
     }
 }
-
-
 
     private void UpdateAnimation()
     {
@@ -133,7 +187,6 @@ private void Movement()
     {
         float inputMove = Mathf.Clamp(Mathf.Abs(inputController.Move.x) + Mathf.Abs(inputController.Move.y), 0f, 1f);
         float maxSpeed = isDefending ? defenseSpeed : runSpeed;
-
         return inputMove * currentSpeed / maxSpeed;
     }
 
@@ -164,7 +217,6 @@ private void Movement()
     private void ToggleInventory()
     {
         inventoryController.ToggleInventory();
-
         inputController.UpdateInputFSM(inventoryController.IsOpenPanelInventory() ? FSM_INPUT.INVENTORY : FSM_INPUT.ENABLE_ALL);
     }
 
@@ -189,7 +241,6 @@ private void Movement()
             {
                 timer += Time.deltaTime;
                 bodyTransform.rotation = Quaternion.Lerp(currentRotation, targetRotation, timer / aimRotationTime);
-
                 yield return new WaitForEndOfFrame();
             }
 
@@ -198,7 +249,6 @@ private void Movement()
 
         Vector3 dir = (mousePosition - bodyTransform.position).normalized;
         dir.y = 0f;
-
         aimRotationCoroutine = StartCoroutine(AimRotation(Quaternion.LookRotation(dir)));
     }
 
@@ -214,7 +264,6 @@ private void Movement()
         inputController.UpdateInputFSM(FSM_INPUT.ONLY_UI);
         anim.Play("Die");
         GameManager.Instance.AudioManager.PlayAudio(deathSound);
-
         onPlayerDeath?.Invoke();
     }
 
