@@ -9,7 +9,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 1. ⏳ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
 2. ✅ Punto de vista en Primera Persona.
 3. ⏳ Modificar objetos o agregar con LOD.
-4. ⏳ Incluir animación de objetos en loop. (Opcional: cambiar de animación según alguna interacción)
+4.  ✅ Incluir animación de objetos en loop. (Opcional: cambiar de animación según alguna interacción)
 
 ---
 
@@ -24,6 +24,13 @@ Además, se evitó que la cámara se posicione detrás del jugador o atraviese e
 
 **Preview (GIF próximamente):**
 
+### ✔️ [23/04/2025] Animaciones de enemigos en loop e interacciones
+
+Los enemigos del juego cuentan con animaciones de **idle** y **desplazamiento en loop**, y animaciones de **ataque** que se disparan según la lógica del juego.  
+> Estas animaciones se manejan mediante el componente `EnemyAnimation.cs`, que encapsula el control del `Animator`.
+
+
+**Preview (GIF próximamente):**
 ![GIF de cámara en primera persona](ruta/a/tu/gif-aqui.gif)
 
 ---
