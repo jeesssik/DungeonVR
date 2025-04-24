@@ -38,6 +38,5 @@ Los enemigos del juego cuentan con animaciones de **idle** y **desplazamiento en
 ### 📌 Pendientes
 
 - Configuración de LODs en modelos 3D.
-- Animaciones de objetos en loop (y su posible interacción).
 - Ajustes de iluminación y horneado según criterio de performance y estética.
 
