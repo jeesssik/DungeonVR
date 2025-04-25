@@ -36,7 +36,8 @@ Los enemigos del juego cuentan con animaciones de **idle** y **desplazamiento en
 ---
 
 ### 📌 Pendientes
-
+-Pendiente de la vista en Primera Persona:
+  --Centrar el mouse/puntero a la pantalla con el jugador murando al frente.
 - Configuración de LODs en modelos 3D.
 - Ajustes de iluminación y horneado según criterio de performance y estética.
 
