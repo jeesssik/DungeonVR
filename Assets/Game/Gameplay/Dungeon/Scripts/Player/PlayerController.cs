@@ -5,46 +5,49 @@ using System.Collections;
 public class PlayerController : MonoBehaviour, IDamagable
 {
     [Header("General Settings")]
-    [SerializeField] private Transform bodyTransform = null;
-    [SerializeField] private int maxLife = 0;
-    [SerializeField] private float walkSpeed = 0f;
-    [SerializeField] private float runSpeed = 0f;
-    [SerializeField] private float defenseSpeed = 0f;
-    [SerializeField] private float turnSmoothVelocity = 0f;
-    [SerializeField] private float aimRotationTime = 0f;
-    [SerializeField] private PlayerInventoryController inventoryController = null;
-    [SerializeField] private PlayerItemInteraction itemInteraction = null;
-    [SerializeField] private PickItem pickItem = null;
-    [SerializeField] private AudioEvent deathSound = null;
-    [SerializeField] private AudioEvent recieveHitSound = null;
-    [SerializeField] private AudioEvent pickUpSound = null;
-    [SerializeField] private Transform cameraTransform = null;  // Cámara asignada
+    [SerializeField] private Transform bodyTransform;
+    [SerializeField] private Transform cameraTransform;
+    [SerializeField] private Transform cameraPivot;
+    [SerializeField] private int maxLife = 100;
+    [SerializeField] private float walkSpeed = 2f;
+    [SerializeField] private float runSpeed = 4f;
+    [SerializeField] private float defenseSpeed = 1f;
+    [SerializeField] private float turnSmoothVelocity = 5f;
+    [SerializeField] private float aimRotationTime = 0.2f;
 
-    private PlayerInputController inputController = null;
-    private CharacterController character = null;
-    private Animator anim = null;
-    private Coroutine aimRotationCoroutine = null;
+    [Header("Inventory & Interaction")]
+    [SerializeField] private PlayerInventoryController inventoryController;
+    [SerializeField] private PlayerItemInteraction itemInteraction;
+    [SerializeField] private PickItem pickItem;
+
+    [Header("Audio Events")]
+    [SerializeField] private AudioEvent deathSound;
+    [SerializeField] private AudioEvent recieveHitSound;
+    [SerializeField] private AudioEvent pickUpSound;
+
+    [Header("Mouse Look Settings")]
+    [SerializeField] private float mouseSensitivity = 2f;
+    [SerializeField] private float verticalRotationLimit = 80f;
+
+    // Internals
+    private PlayerInputController inputController;
+    private CharacterController character;
+    private Animator anim;
+    private Coroutine aimRotationCoroutine;
 
     private Vector3 direction = Vector3.zero;
-    private int currentLife = 0;
     private float velocityY = 0f;
-    private float currentSpeed = 0f;
+    private float currentSpeed;
+    private float cameraPitch = 0f;
+    private float verticalRotation = 0f;
+    private int currentLife;
     private bool isDefending = false;
     private bool isDead = false;
 
-    private Action onOpenPausePanel = null;
-    private Action<int, int> onUpdateLife = null;
-    private Action onPlayerDeath = null;
-        public Transform cameraPivot;           // CameraPivot
-
-    [Header("Settings")]
-    public float movementSpeed = 5f;
-    public float mouseSensitivity = 2f;
-    public float verticalRotationLimit = 80f;
-
-    private float verticalRotation = 0f;
-
-
+    // Delegates
+    private Action onOpenPausePanel;
+    private Action<int, int> onUpdateLife;
+    private Action onPlayerDeath;
 
     private void Awake()
     {
@@ -58,8 +61,18 @@ public class PlayerController : MonoBehaviour, IDamagable
         currentSpeed = walkSpeed;
         currentLife = maxLife;
 
-        inputController.Init(ToggleOnPause, ToggleInventory, PickItem, ToggleRun, inventoryController.ChangeWeapons,
-            itemInteraction.PressAction1, itemInteraction.PressAction2, itemInteraction.CancelAction1, itemInteraction.CancelAction2);
+        inputController.Init(
+            ToggleOnPause,
+            ToggleInventory,
+            PickItem,
+            ToggleRun,
+            inventoryController.ChangeWeapons,
+            itemInteraction.PressAction1,
+            itemInteraction.PressAction2,
+            itemInteraction.CancelAction1,
+            itemInteraction.CancelAction2
+        );
+
         inventoryController.Init();
         itemInteraction.Init(inputController, inventoryController, ToggleDefense, ConsumePotionLife, LookMousePosition);
     }
@@ -67,12 +80,11 @@ public class PlayerController : MonoBehaviour, IDamagable
     private void Update()
     {
         ApplyGravity();
-        HandleRotation();  // Rotación del cuerpo
-        HandleCameraRotation();  // Rotación de la cámara
-        Movement();
+        HandleCameraRotation();
+        HandleBodyRotation();
+        MovePlayer();
+        HandleMouseLook(); // Solo si usás Input.GetAxis
         UpdateAnimation();
-         HandleMovement();
-        HandleMouseLook();
     }
 
     public void Init(Action onOpenPausePanel, Action<int, int> onUpdateLife, Action onPlayerDeath)
@@ -89,105 +101,66 @@ public class PlayerController : MonoBehaviour, IDamagable
         character.enabled = true;
     }
 
-    public void TogglePause(bool status)
-    {
-        inputController.UpdateInputFSM(status ? FSM_INPUT.ONLY_UI : inputController.CurrentInputState, false);
-    }
-
-    public void DisableInput()
-    {
-        inputController.UpdateInputFSM(FSM_INPUT.ONLY_UI);
-    }
-
-    public void PlayVictoryAnimation()
-    {
-        anim.Play("Victory");
-    }
-
     private void ApplyGravity()
     {
-        velocityY = !character.isGrounded ? -Physics.gravity.magnitude : 0f;
+        velocityY = character.isGrounded ? 0f : -Physics.gravity.magnitude;
     }
-
-    private void HandleRotation() // Controla la rotación del cuerpo
-    {
-        // El cuerpo rota solo si hay movimiento horizontal o vertical
-        if (Mathf.Abs(inputController.Move.x) > Mathf.Epsilon || Mathf.Abs(inputController.Move.y) > Mathf.Epsilon)
+    
+        private void HandleBodyRotation()
         {
-            Vector3 moveDirection = new Vector3(inputController.Move.x, 0f, inputController.Move.y).normalized;
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            bodyTransform.rotation = Quaternion.Slerp(bodyTransform.rotation, targetRotation, turnSmoothVelocity * Time.deltaTime);
+            Vector2 move = inputController.Move;
+
+            if (move.sqrMagnitude > 0.01f)
+            {
+                Vector3 direction = new Vector3(move.x, 0, move.y);
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                bodyTransform.rotation = Quaternion.Slerp(bodyTransform.rotation, targetRotation, turnSmoothVelocity * Time.deltaTime);
+            }
         }
-    }
-    void HandleMovement()
+   
+
+
+    private void MovePlayer()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-
-        // Movimiento relativo al cuerpo, NO a la cámara
-        Vector3 inputDirection = new Vector3(h, 0f, v);
-        Vector3 worldDirection = bodyTransform.TransformDirection(inputDirection);
-        character.Move(worldDirection * movementSpeed * Time.deltaTime);
+        Vector3 moveInput = new Vector3(inputController.Move.x, 0f, inputController.Move.y).normalized;
+        Vector3 moveDir = bodyTransform.TransformDirection(moveInput);
+        moveDir.y = velocityY;
+        character.Move(currentSpeed * Time.deltaTime * moveDir);
     }
 
- void HandleMouseLook()
+    private void HandleCameraRotation()
+    {
+        Vector2 lookInput = inputController.Look;
+
+        cameraPitch -= lookInput.y * mouseSensitivity * Time.deltaTime;
+        cameraPitch = Mathf.Clamp(cameraPitch, -verticalRotationLimit, verticalRotationLimit);
+        cameraTransform.localEulerAngles = new Vector3(cameraPitch, 0, 0);
+
+        bodyTransform.Rotate(Vector3.up * lookInput.x * mouseSensitivity * Time.deltaTime);
+    }
+
+    private void HandleMouseLook()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        // Rotación horizontal: cuerpo del jugador
         bodyTransform.Rotate(Vector3.up * mouseX);
 
-        // Rotación vertical: cámara (con clamp)
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, -verticalRotationLimit, verticalRotationLimit);
         cameraPivot.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
     }
-  private float cameraPitch = 0f;
-
-private void HandleCameraRotation()
-{
-    Vector2 lookInput = inputController.Look;
-
-    // Rotación vertical (eje X)
-    float lookY = lookInput.y * 2f * Time.deltaTime;
-    cameraPitch -= lookY;
-    cameraPitch = Mathf.Clamp(cameraPitch, -80f, 80f);
-
-    cameraTransform.localEulerAngles = new Vector3(cameraPitch, 0f, 0f);
-
-    // Rotación horizontal (eje Y) del *pivote* o del cuerpo, NO la cámara
-    float lookX = lookInput.x * 2f * Time.deltaTime;
-    bodyTransform.Rotate(Vector3.up * lookX);
-}
-
-
-   private void Movement()
-{
-    Vector3 inputDirection = new Vector3(inputController.Move.x, 0f, inputController.Move.y).normalized;
-
-    if (inputDirection.magnitude >= 0.1f)
-    {
-        Vector3 moveDir = bodyTransform.TransformDirection(inputDirection);
-        moveDir.y = velocityY;
-        character.Move(currentSpeed * Time.deltaTime * moveDir);
-    }
-    else
-    {
-        character.Move(Vector3.up * velocityY * Time.deltaTime);
-    }
-}
 
     private void UpdateAnimation()
     {
-        anim.SetFloat("Speed", GetMovementSpeed(), 0.05f, Time.deltaTime);
+        anim.SetFloat("Speed", GetNormalizedSpeed(), 0.05f, Time.deltaTime);
     }
 
-    private float GetMovementSpeed()
+    private float GetNormalizedSpeed()
     {
-        float inputMove = Mathf.Clamp(Mathf.Abs(inputController.Move.x) + Mathf.Abs(inputController.Move.y), 0f, 1f);
+        float inputMagnitude = Mathf.Clamp01(Mathf.Abs(inputController.Move.x) + Mathf.Abs(inputController.Move.y));
         float maxSpeed = isDefending ? defenseSpeed : runSpeed;
-        return inputMove * currentSpeed / maxSpeed;
+        return inputMagnitude * currentSpeed / maxSpeed;
     }
 
     private void ToggleRun(bool status)
@@ -226,36 +199,93 @@ private void HandleCameraRotation()
         onOpenPausePanel?.Invoke();
     }
 
+    public void TogglePause(bool status)
+    {
+        inputController.UpdateInputFSM(status ? FSM_INPUT.ONLY_UI : inputController.CurrentInputState, false);
+    }
+
+    public void DisableInput()
+    {
+        inputController.UpdateInputFSM(FSM_INPUT.ONLY_UI);
+    }
+
+    public void PlayVictoryAnimation()
+    {
+        anim.Play("Victory");
+    }
+
     private void LookMousePosition(Vector3 mousePosition)
     {
         if (aimRotationCoroutine != null)
-        {
             StopCoroutine(aimRotationCoroutine);
-        }
 
-        IEnumerator AimRotation(Quaternion targetRotation)
-        {
-            float timer = 0f;
-            Quaternion currentRotation = bodyTransform.rotation;
-            while (timer < aimRotationTime)
-            {
-                timer += Time.deltaTime;
-                bodyTransform.rotation = Quaternion.Lerp(currentRotation, targetRotation, timer / aimRotationTime);
-                yield return new WaitForEndOfFrame();
-            }
+        Vector3 direction = (mousePosition - bodyTransform.position).normalized;
+        direction.y = 0f;
 
-            bodyTransform.rotation = targetRotation;
-        }
-
-        Vector3 dir = (mousePosition - bodyTransform.position).normalized;
-        dir.y = 0f;
-        aimRotationCoroutine = StartCoroutine(AimRotation(Quaternion.LookRotation(dir)));
+        aimRotationCoroutine = StartCoroutine(RotateTowards(Quaternion.LookRotation(direction)));
     }
+/////////////////////////////
+    /* private IEnumerator RotateTowards(Quaternion targetRotation)
+     {
+         float timer = 0f;
+         Quaternion startRotation = bodyTransform.rotation;
+
+         while (timer < aimRotationTime)
+         {
+             timer += Time.deltaTime;
+             bodyTransform.rotation = Quaternion.Lerp(startRotation, targetRotation, timer / aimRotationTime);
+             yield return null;
+         }
+
+         bodyTransform.rotation = targetRotation;
+     }*/
+    //////////////////////////////////
+  
+private IEnumerator RotateTowards(Quaternion targetRotation)
+{
+    float timer = 0f;
+    Quaternion startRotation = bodyTransform.rotation;
+
+    // Forzar la rotación solo en Y
+    Vector3 eulerTarget = targetRotation.eulerAngles;
+    Quaternion targetRotationY = Quaternion.Euler(0, eulerTarget.y, 0);
+
+    while (timer < aimRotationTime)
+    {
+        timer += Time.deltaTime;
+        bodyTransform.rotation = Quaternion.Lerp(startRotation, targetRotationY, timer / aimRotationTime);
+        yield return null;
+    }
+
+    bodyTransform.rotation = targetRotationY;
+}
+
+
+
+    /// ////////////////////////////////////////////////
 
     private void ConsumePotionLife(int life)
     {
         currentLife = Mathf.Clamp(currentLife + life, 0, maxLife);
         onUpdateLife?.Invoke(currentLife, maxLife);
+    }
+
+    public void Damage(int amount)
+    {
+        if (isDead) return;
+
+        currentLife -= amount;
+        currentLife = Mathf.Max(0, currentLife);
+
+        if (currentLife == 0)
+        {
+            Death();
+        }
+        else
+        {
+            GameManager.Instance.AudioManager.PlayAudio(recieveHitSound);
+            onUpdateLife?.Invoke(currentLife, maxLife);
+        }
     }
 
     private void Death()
@@ -265,24 +295,5 @@ private void HandleCameraRotation()
         anim.Play("Die");
         GameManager.Instance.AudioManager.PlayAudio(deathSound);
         onPlayerDeath?.Invoke();
-    }
-
-    public void Damage(int damageAmount)
-    {
-        currentLife -= damageAmount;
-        if (currentLife <= 0)
-        {
-            currentLife = 0;
-            if (!isDead)
-            {
-                Death();
-            }
-        }
-        else
-        {
-            GameManager.Instance.AudioManager.PlayAudio(recieveHitSound);
-        }
-
-        onUpdateLife?.Invoke(currentLife, maxLife);
     }
 }
