@@ -29,8 +29,6 @@ public class PlayerItemInteraction : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-          if (mainCamera == null)
-        mainCamera = Camera.main;
     }
 
     public void Init(PlayerInputController inputController, PlayerInventoryController inventoryController, Action<bool> onToggleDefense, Action<int> onConsumeLife, Action<Vector3> onLookMousePosition)
