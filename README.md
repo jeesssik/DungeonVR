@@ -24,8 +24,9 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ## Progreso
 
-### ✔️ [03/06/2025] Corrección de assets en escena de calabozo
+### ✔️ [03/06/2025] Correcciones
 Se eliminó decoración que no correspondía a la escena.
+Se corrigió la visualización de pantalla de juego ganado.
 
 
 ### ✔️ [02/06/2025] Corrección de iluminación baked en paredes
