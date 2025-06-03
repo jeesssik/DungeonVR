@@ -7,7 +7,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ## Requisitos del trabajo
 
 **Escena 1 (Exterior)**
-1. ✅ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
+1. ⏳ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
 2. ✅ Punto de vista en Primera Persona.
 3. ✅ Modificar objetos o agregar con LOD.
 4. ⏳ Incluir animación de objetos en loop. (Opcional: cambiar de animación según alguna interacción)
@@ -21,11 +21,15 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 **Escena 2 (Dungeon)**
 1. ✅ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
 2. ✅ Punto de vista en Primera Persona.
-3. ⏳ Modificar objetos o agregar con LOD.
+3. ✅ Modificar objetos o agregar con LOD.
 4. ✅ Incluir animación de objetos en loop. 
 
 ---
 ---
+
+
+
+--
 
 ## Progreso
 
