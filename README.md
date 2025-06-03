@@ -24,6 +24,10 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ## Progreso
 
+### ✔️ [03/06/2025] Corrección de assets en escena de calabozo
+Se eliminó decoración que no correspondía a la escena.
+
+
 ### ✔️ [02/06/2025] Corrección de iluminación baked en paredes
 Se detectó que algunas paredes interiores se veían notablemente más claras debido a una configuración incorrecta de Light Probes y la ausencia de mapas horneados asignados.Add commentMore actions
 
