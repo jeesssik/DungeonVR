@@ -27,7 +27,25 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ---
 ---
 
+
 ## Progreso
+
+### ✔️ [02/06/2025] Corrección de iluminación baked en paredes
+Se detectó que algunas paredes interiores se veían notablemente más claras debido a una configuración incorrecta de Light Probes y la ausencia de mapas horneados asignados.Add commentMore actions
+
+🔧 Correcciones aplicadas:
+
+Se desactivó el uso de Light Probes en las paredes estáticas.
+
+Se marcó correctamente cada pared como Static y con Contribute Global Illumination.
+
+Se forzó un rebake desde la ventana de Lighting → Scene, usando la opción Generate Lighting.
+
+Se verificó que todos los objetos estáticos estén correctamente asignados al Baked Lightmap correspondiente.
+
+Esto permitió una integración coherente de la iluminación en todo el entorno horneado, eliminando discrepancias visuales entre paredes contiguas.
+![GIF de cámara en primera persona](./Screens/correccionIlum.png)
+--
 
 ### ✔️ [30/05/2025] Ajuste de materiales del castillo
 
