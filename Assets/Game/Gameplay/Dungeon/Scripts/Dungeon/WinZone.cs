@@ -1,16 +1,12 @@
 using System;
 using System.Collections;
-
 using UnityEngine;
-
-using Cinemachine;
 
 public class WinZone : MonoBehaviour
 {
     [SerializeField] private LayerMask playerLayer = default;
     [SerializeField] private float focusRoomTransitionTime = 0f;
     [SerializeField] private float winAnimationExtraTime = 0f;
-    [SerializeField] private CinemachineVirtualCamera virtualCamera = null;
     [SerializeField] private Vector3 offset = Vector3.zero;
 
     [SerializeField] private float radius = 0f;
@@ -38,22 +34,20 @@ public class WinZone : MonoBehaviour
 
     public void PlayWinAnimation()
     {
-        virtualCamera.Follow = null;
-        virtualCamera.LookAt = null;
-
         StartCoroutine(FocusRuneTransitionCoroutine());
+
         IEnumerator FocusRuneTransitionCoroutine()
         {
             float timer = 0f;
-            Vector3 startPosition = virtualCamera.transform.position;
+
+            Transform cam = Camera.main.transform;
+            Vector3 startPosition = cam.position;
             Vector3 targetPosition = new Vector3(transform.position.x, startPosition.y, transform.position.z) + offset;
 
             while (timer < focusRoomTransitionTime)
             {
                 timer += Time.deltaTime;
-
-                virtualCamera.transform.position = Vector3.Lerp(startPosition, targetPosition, timer / focusRoomTransitionTime);
-
+                cam.position = Vector3.Lerp(startPosition, targetPosition, timer / focusRoomTransitionTime);
                 yield return new WaitForEndOfFrame();
             }
 
