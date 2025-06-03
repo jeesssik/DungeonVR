@@ -44,6 +44,7 @@ Se forzó un rebake desde la ventana de Lighting → Scene, usando la opción Ge
 Se verificó que todos los objetos estáticos estén correctamente asignados al Baked Lightmap correspondiente.
 
 Esto permitió una integración coherente de la iluminación en todo el entorno horneado, eliminando discrepancias visuales entre paredes contiguas.
+
 ![GIF de cámara en primera persona](./Screens/correccionIlum.png)
 --
 
