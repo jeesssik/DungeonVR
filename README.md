@@ -24,10 +24,20 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ## Progreso
 
-### ✔️ [03/06/2025] Correcciones y Agregado de Reflection Probe y Light Probe
-Se eliminó decoración que no correspondía a la escena.
-Se corrigió la visualización de pantalla de juego ganado.
-Se agregó Reflerction Probe y Light Probes a la escena 2
+### ✔️  [03/06/2025] Integración de Reflection Probe y Light Probe (Escena Dungeon)
+
+Se agregaron Reflection Probes y Light Probes en la Escena 2 para optimizar los reflejos y la iluminación indirecta de los objetos dinámicos en el calabozo.
+
+Reflection Probes:
+
+Colocados en áreas clave para capturar los reflejos de las habitaciones y los pasillos.
+
+Configuración optimizada en modo Baked para reducir el impacto en el rendimiento.
+
+Light Probes:
+
+Distribuidos en zonas estratégicas: alrededor de fuentes de luz (antorchas, lámparas) y en transiciones de luz/sombra (esquinas, pasillos estrechos).
+
 
 
 ### ✔️ [02/06/2025] Corrección de iluminación baked en paredes
@@ -85,9 +95,9 @@ Además, se evitó que la cámara se posicione detrás del jugador o atraviese e
 ## 📌 Pendientes
 
 - Ambientación final de la escena exterior.
-- Distribución y bake final de Light Probes.
+- Distribución y bake final de Light Probes en escena exterior.
 - Verificar iluminación en todos los sectores de la escena desde el punto de vista del jugador.
-- Implementar cambio de animación por interacción (opcional).
+- Implementar cambio de animación por interacción en kla escena del exterior.
 - Revisión de rendimiento final con LODs aplicados.
 
 ---
@@ -95,7 +105,7 @@ Además, se evitó que la cámara se posicione detrás del jugador o atraviese e
 ## 🐱‍👓 Extras
 
 - Centrar el mouse/puntero a la pantalla con el jugador mirando al frente.
-- Incorporación de materiales personalizados para solucionar caras invisibles sin modificar el modelo.
+
 
 ---
 
