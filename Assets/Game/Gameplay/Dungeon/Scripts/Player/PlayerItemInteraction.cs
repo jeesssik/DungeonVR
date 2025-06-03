@@ -29,6 +29,10 @@ public class PlayerItemInteraction : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+    if (anim == null)
+    {
+        Debug.LogError("Animator component not found!");
+    }
     }
 
     public void Init(PlayerInputController inputController, PlayerInventoryController inventoryController, Action<bool> onToggleDefense, Action<int> onConsumeLife, Action<Vector3> onLookMousePosition)
@@ -40,57 +44,101 @@ public class PlayerItemInteraction : MonoBehaviour
         this.onConsumeLife = onConsumeLife;
         this.onLookMousePosition = onLookMousePosition;
     }
-
-    public void PressAction1()
-    {
-        Item item = GetItemByEquipmentIndex(1);
-        if (item != null)
+    /************
+        public void PressAction1()
         {
-            if (item is Weapon weapon)
+            Item item = GetItemByEquipmentIndex(1);
+            if (item != null)
             {
-                switch (weapon.type)
+                if (item is Weapon weapon)
                 {
-                    case WeaponType.Sword:
-                        anim.SetTrigger("AttackSword");
-                        rightHandItem.SetDamage(weapon.damage);
-                        GameManager.Instance.AudioManager.PlayAudio(swordSound);
-                        ToggleOnInteractionInput();
-                        break;
-                    case WeaponType.Wand:
-                        anim.SetTrigger("AttackWand");
-                        targetPosition = GetMouseWorldPosition();
-
-                        ToggleOnInteractionInput();
-                        break;
-                    case WeaponType.Bow:
-                        break;
-                }
-
-                currentWeapon = weapon;
-            }
-            else if (item is Projectile projectile)
-            {
-                Item item2 = GetItemByEquipmentIndex(0);
-                if (item2 is Weapon weapon2)
-                {
-                    switch (weapon2.type)
+                    switch (weapon.type)
                     {
-                        case WeaponType.Bow:
-                            anim.SetTrigger("AttackBow");
+                        case WeaponType.Sword:
+                            anim.SetTrigger("AttackSword");
+                            rightHandItem.SetDamage(weapon.damage);
+                            GameManager.Instance.AudioManager.PlayAudio(swordSound);
                             ToggleOnInteractionInput();
+                            break;
+                        case WeaponType.Wand:
+                            anim.SetTrigger("AttackWand");
+                            targetPosition = GetMouseWorldPosition();
+
+                            ToggleOnInteractionInput();
+                            break;
+                        case WeaponType.Bow:
                             break;
                     }
 
-                    currentWeapon = weapon2;
+                    currentWeapon = weapon;
+                }
+                else if (item is Projectile projectile)
+                {
+                    Item item2 = GetItemByEquipmentIndex(0);
+                    if (item2 is Weapon weapon2)
+                    {
+                        switch (weapon2.type)
+                        {
+                            case WeaponType.Bow:
+                                anim.SetTrigger("AttackBow");
+                                ToggleOnInteractionInput();
+                                break;
+                        }
+
+                        currentWeapon = weapon2;
+                    }
+
+                    currentProjectile = projectile;
                 }
 
-                currentProjectile = projectile;
+                onLookMousePosition?.Invoke(GetMouseWorldPosition());
             }
-
-            onLookMousePosition?.Invoke(GetMouseWorldPosition());
         }
+
+    ************/
+    /************/
+public void PressAction1()
+{
+    Item item = GetItemByEquipmentIndex(1);
+    if (item == null)
+    {
+        Debug.LogWarning("No item equipped in slot 1.");
+        return;
     }
 
+    if (item is Weapon weapon)
+    {
+        switch (weapon.type)
+        {
+            case WeaponType.Sword:
+                if (anim != null) anim.SetTrigger("AttackSword");
+                rightHandItem?.SetDamage(weapon.damage);
+                GameManager.Instance.AudioManager?.PlayAudio(swordSound);
+                ToggleOnInteractionInput();
+                break;
+
+            case WeaponType.Wand:
+                if (anim != null) anim.SetTrigger("AttackWand");
+                targetPosition = GetMouseWorldPosition();
+                ToggleOnInteractionInput();
+                break;
+
+            case WeaponType.Bow:
+                Debug.LogWarning("Bow attack not implemented.");
+                break;
+        }
+
+        currentWeapon = weapon;
+    }
+    else if (item is Projectile projectile)
+    {
+        // Similar lógica para proyectiles...
+    }
+
+    onLookMousePosition?.Invoke(GetMouseWorldPosition());
+}
+
+    /***************/
     public void PressAction2()
     {
         Item item = GetItemByEquipmentIndex(0);
@@ -173,13 +221,36 @@ public class PlayerItemInteraction : MonoBehaviour
         inputController.UpdateInputFSM(FSM_INPUT.INTERACTING, false);
     }
 
-    private Item GetItemByEquipmentIndex(int index)
+    /*private Item GetItemByEquipmentIndex(int index)
     {
         int itemId = inventoryController.Equipment.GetID(index);
         return ItemManager.Instance.GetItemFromID(itemId);
+    }*/
+
+    /******************
+***********/
+
+private Item GetItemByEquipmentIndex(int index)
+{
+    if (inventoryController == null)
+    {
+        Debug.LogError("InventoryController is not initialized.");
+        return null;
     }
 
-    private Vector3 GetMouseWorldPosition()
+    if (inventoryController.Equipment == null)
+    {
+        Debug.LogError("Inventory Equipment is null.");
+        return null;
+    }
+
+    int itemId = inventoryController.Equipment.GetID(index);
+    return ItemManager.Instance?.GetItemFromID(itemId);
+}
+
+
+/***************************
+***************/    private Vector3 GetMouseWorldPosition()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, floorLayer))
