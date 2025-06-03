@@ -12,11 +12,6 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 3. ✅ Modificar objetos o agregar con LOD.
 4. ⏳ Incluir animación de objetos en loop. (Opcional: cambiar de animación según alguna interacción)
 
-**Escena 2**
-1. ⏳ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
-2. ✅ Punto de vista en Primera Persona.
-3. ✅ Modificar objetos o agregar con LOD.
-4. ⏳ Incluir animación de objetos en loop.
 
 **Escena 2 (Dungeon)**
 1. ✅ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
@@ -27,13 +22,6 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ---
 ---
 
-
-<<<<<<< HEAD
-
---
-
-=======
->>>>>>> dev
 ## Progreso
 
 ### ✔️ [02/06/2025] Corrección de iluminación baked en paredes
