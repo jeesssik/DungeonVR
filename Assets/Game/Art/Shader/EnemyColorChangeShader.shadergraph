@@ -329,8 +329,8 @@
     "m_ShaderOutputName": "OutMinMax",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 0.5,
-        "y": 1.5
+        "x": 0.10000000149011612,
+        "y": 2.0
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -486,7 +486,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Metallic",
     "m_StageCapability": 2,
-    "m_Value": 0.0,
+    "m_Value": 0.18000000715255738,
     "m_DefaultValue": 0.0,
     "m_Labels": []
 }
@@ -1057,10 +1057,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -439.0000305175781,
-            "y": -54.0000114440918,
-            "width": 208.0000762939453,
-            "height": 325.9999694824219
+            "x": -401.9999694824219,
+            "y": -65.0000228881836,
+            "width": 207.99996948242188,
+            "height": 326.0000305175781
         }
     },
     "m_Slots": [
