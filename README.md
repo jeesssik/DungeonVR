@@ -24,6 +24,24 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ## Progreso
 
+## ✔️ [04/06/2025] Shader Graph personalizado para paredes de la dungeon
+Se diseñó un shader personalizado con Shader Graph para aplicar materiales estilizados a las paredes de la escena del calabozo (Dungeon).
+
+🔧 Implementación técnica:
+
+Se creó una propiedad expuesta de textura (_BaseMap) para permitir la asignación dinámica desde el material.
+
+Se conectó esta textura al nodo Base Color del Fragment, asegurando compatibilidad con materiales URP estándar.
+
+Se agregó una propiedad de color para Emission, que permite controlar el brillo que emite el material. Este valor se multiplica por la textura para generar un efecto de autoiluminación sutil.
+
+Se utilizó un material con este shader personalizado (DungeonWallMat) para reemplazar los materiales anteriores en los MeshRenderer de las paredes.
+
+🎨 Resultado:
+Las paredes ahora cuentan con un shader visualmente más rico, con control directo sobre la textura y el brillo (emisión), permitiendo más flexibilidad artística y una mejor integración con la ambientación de la escena.
+
+🖼️ [GIF o imagen del resultado próximamente]
+
 ### ✔️  [03/06/2025] Integración de Reflection Probe y Light Probe (Escena Dungeon)
 
 Se agregaron Reflection Probes y Light Probes en la Escena 2 para optimizar los reflejos y la iluminación indirecta de los objetos dinámicos en el calabozo.
