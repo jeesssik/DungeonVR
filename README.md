@@ -61,6 +61,33 @@ Luces antes:
 Luces después:
 ![imagen de las luces depués de la modificacion](./Screens/luces-despues.png)
 
+## Oscilación de brillo con Shader Graph (efecto de pulso sobre textura de enemigo)
+Se implementó un sistema dentro del Shader Graph para permitir que la textura del material varíe dinámicamente su brillo con el tiempo, generando un efecto visual tipo pulso. 
+
+🔧 Implementación:
+Textura Base
+
+Se expuso la propiedad _BaseMap en el Shader para poder asignar la textura desde el material.
+
+Se utilizó un nodo Sample Texture 2D para obtener el color de la textura.
+
+Oscilación del brillo con tiempo
+
+Se tomó el valor de tiempo (Time) y se lo modificó con un nodo Sine para obtener un valor oscilante entre -1 y 1.
+
+Este valor se transformó con un nodo Remap para mapearlo al rango 0.5 - 1.5 (brillo más oscuro y más claro).
+
+Finalmente, se usó un nodo Multiply para multiplicar el color de la textura por este valor oscilante, generando el efecto de pulso.
+
+Salida del shader
+
+El resultado del Multiply se conectó al nodo Base Color, y opcionalmente también se puede conectar a Emission para simular un resplandor rítmico.
+
+
+🖼️ Resultado visual (captura o gif si lo tuvieras):
+
+
+<!-- puedes reemplazar esta línea con el path real si decides capturar pantalla -->
 
 ### ✔️  [03/06/2025] Integración de Reflection Probe y Light Probe (Escena Dungeon)
 
