@@ -11,6 +11,8 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 2. ✅ Punto de vista en Primera Persona.
 3. ✅ Modificar objetos o agregar con LOD.
 4. ⏳ Incluir animación de objetos en loop. (Opcional: cambiar de animación según alguna interacción)
+5. ⏳ Agregado de materiales con  Shader Graph
+
 
 
 **Escena 2 (Dungeon)**
@@ -18,11 +20,46 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 2. ✅ Punto de vista en Primera Persona.
 3. ✅ Modificar objetos o agregar con LOD.
 4. ✅ Incluir animación de objetos en loop. 
+5. ✅ Agregado de materiales con  Shader Graph
 
 ---
 ---
 
 ## Progreso
+
+## ✔️ [04/06/2025] Shader Graph personalizado para paredes de la dungeon
+Se diseñó un shader personalizado con Shader Graph para aplicar materiales estilizados a las paredes de la escena del calabozo (Dungeon).
+
+🔧 Implementación técnica:
+
+Se creó una propiedad expuesta de textura (_BaseMap) para permitir la asignación dinámica desde el material.
+
+Se conectó esta textura al nodo Base Color del Fragment, asegurando compatibilidad con materiales URP estándar.
+
+Se agregó una propiedad de color para Emission, que permite controlar el brillo que emite el material. 
+
+Se utilizó un material con este shader personalizado (DungeonWallMat) para reemplazar los materiales anteriores en los MeshRenderer de las paredes.
+
+🎨 Resultado:
+Las paredes ahora cuentan con un shader visualmente más rico, con control directo sobre la textura y el brillo (emisión), permitiendo más flexibilidad artística y una mejor integración con la ambientación de la escena.
+
+🖼️ [GIF o imagen del resultado próximamente]
+
+### ✔️  [03/06/2025] Integración de Reflection Probe y Light Probe (Escena Dungeon)
+
+Se agregaron Reflection Probes y Light Probes en la Escena 2 para optimizar los reflejos y la iluminación indirecta de los objetos dinámicos en el calabozo.
+
+Reflection Probes:
+
+Colocados en áreas clave para capturar los reflejos de las habitaciones y los pasillos.
+
+Configuración optimizada en modo Baked para reducir el impacto en el rendimiento.
+
+Light Probes:
+
+Distribuidos en zonas estratégicas: alrededor de fuentes de luz (antorchas, lámparas) y en transiciones de luz/sombra (esquinas, pasillos estrechos).
+
+
 
 ### ✔️ [02/06/2025] Corrección de iluminación baked en paredes
 Se detectó que algunas paredes interiores se veían notablemente más claras debido a una configuración incorrecta de Light Probes y la ausencia de mapas horneados asignados.Add commentMore actions
@@ -79,9 +116,9 @@ Además, se evitó que la cámara se posicione detrás del jugador o atraviese e
 ## 📌 Pendientes
 
 - Ambientación final de la escena exterior.
-- Distribución y bake final de Light Probes.
+- Distribución y bake final de Light Probes en escena exterior.
 - Verificar iluminación en todos los sectores de la escena desde el punto de vista del jugador.
-- Implementar cambio de animación por interacción (opcional).
+- Implementar cambio de animación por interacción en kla escena del exterior.
 - Revisión de rendimiento final con LODs aplicados.
 
 ---
@@ -89,7 +126,7 @@ Además, se evitó que la cámara se posicione detrás del jugador o atraviese e
 ## 🐱‍👓 Extras
 
 - Centrar el mouse/puntero a la pantalla con el jugador mirando al frente.
-- Incorporación de materiales personalizados para solucionar caras invisibles sin modificar el modelo.
+
 
 ---
 
