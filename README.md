@@ -55,7 +55,12 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Las paredes ahora cuentan con un shader visualmente más rico, con control directo sobre la textura y emisión.
 - La iluminación es más realista y optimizada, sin que las luces atraviesen paredes.
 
-🖼️ *[GIF o imagen del resultado próximamente]*
+Luces antes:
+![imagen de luces antes de la modificación](./Screens/luces-antes.png)
+
+Luces después:
+![imagen de las luces depués de la modificacion](./Screens/luces-despues.png)
+
 
 ### ✔️  [03/06/2025] Integración de Reflection Probe y Light Probe (Escena Dungeon)
 
