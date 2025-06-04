@@ -33,7 +33,7 @@ Se creó una propiedad expuesta de textura (_BaseMap) para permitir la asignaci�
 
 Se conectó esta textura al nodo Base Color del Fragment, asegurando compatibilidad con materiales URP estándar.
 
-Se agregó una propiedad de color para Emission, que permite controlar el brillo que emite el material. Este valor se multiplica por la textura para generar un efecto de autoiluminación sutil.
+Se agregó una propiedad de color para Emission, que permite controlar el brillo que emite el material. 
 
 Se utilizó un material con este shader personalizado (DungeonWallMat) para reemplazar los materiales anteriores en los MeshRenderer de las paredes.
 
