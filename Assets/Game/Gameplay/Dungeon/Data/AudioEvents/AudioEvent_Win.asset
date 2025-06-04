@@ -1,18 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f4030fb5bdcef4089dcc4548b8dbcf, type: 3}
-  m_Name: AudioEvent_Win
-  m_EditorClassIdentifier: 
-  audioType: 0
-  soundType: 0
-  clip: {fileID: 8300000, guid: bdbc2284c18752b4e9c7263ea91896d6, type: 3}
-  volume: 1
+version https://git-lfs.github.com/spec/v1
+oid sha256:be09263c2acfd71a278a19f0703a2e6226eedf977634087d8f40411c325cd3c2
+size 538
