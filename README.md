@@ -51,9 +51,6 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
    - Ubicación estratégica de **Light Probes** en zonas clave (transiciones de luz/sombra, esquinas).
    - Activación de **Hard Shadows** en luces dinámicas.
 
-### 🎨 Resultado:
-- Las paredes ahora cuentan con un shader visualmente más rico, con control directo sobre la textura y emisión.
-- La iluminación es más realista y optimizada, sin que las luces atraviesen paredes.
 
 Luces antes:
 ![imagen de luces antes de la modificación](./Screens/luces-antes.png)
@@ -81,10 +78,10 @@ Finalmente, se usó un nodo Multiply para multiplicar el color de la textura por
 
 Salida del shader
 
-El resultado del Multiply se conectó al nodo Base Color, y opcionalmente también se puede conectar a Emission para simular un resplandor rítmico.
 
 
-🖼️ Resultado visual (captura o gif si lo tuvieras):
+![visualización de shader en enmigo](./Screens/shadergraph-Enemigo.gif)
+
 
 
 <!-- puedes reemplazar esta línea con el path real si decides capturar pantalla -->
@@ -105,6 +102,7 @@ Distribuidos en zonas estratégicas: alrededor de fuentes de luz (antorchas, lá
 
 ![GIF de cámara en primera persona](./Screens/light-probe.png)
 
+---
 
 ### ✔️ [02/06/2025] Corrección de iluminación baked en paredes
 Se detectó que algunas paredes interiores se veían notablemente más claras debido a una configuración incorrecta de Light Probes y la ausencia de mapas horneados asignados.Add commentMore actions
