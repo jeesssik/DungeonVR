@@ -27,23 +27,35 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ## Progreso
 
-## ✔️ [04/06/2025] Shader Graph personalizado para paredes de la dungeon
-Se diseñó un shader personalizado con Shader Graph para aplicar materiales estilizados a las paredes de la escena del calabozo (Dungeon).
+## ✔️ [04/06/2025] Shader Graph personalizado para paredes de la dungeon & Configuración de iluminación optimizada
 
-🔧 Implementación:
+### Shader Graph personalizado para paredes
+- Se diseñó un shader personalizado con **Shader Graph** para aplicar materiales estilizados a las paredes de la escena del calabozo (**Dungeon**).
+- Se creó una propiedad expuesta de textura (**_BaseMap**) para permitir la asignación dinámica desde el material.
+- Se conectó esta textura al nodo **Base Color** del Fragment, asegurando compatibilidad con materiales **URP estándar**.
+- Se agregó una propiedad de color para **Emission**, que permite controlar el brillo que emite el material.
+- Se utilizó un material con este shader personalizado (**DungeonWallMat**) para reemplazar los materiales anteriores en los **MeshRenderer** de las paredes.
 
-Se creó una propiedad expuesta de textura (_BaseMap) para permitir la asignación dinámica desde el material.
+### Configuración de iluminación con Light Probes y sombras para Point Lights
+- Se implementó una configuración de iluminación optimizada en la escena:
+  - Colocación de **Light Probes** estratégicamente para mejorar la iluminación indirecta en áreas con luces dinámicas.
+  - Configuración de **Point Lights** con sombras **Hard Shadows** para evitar que la luz atraviese paredes y mejorar el realismo en la iluminación.
+  - Ajuste de los rangos de luz y las máscaras de culling para optimizar el rendimiento y asegurar que las luces afecten solo las áreas necesarias.
 
-Se conectó esta textura al nodo Base Color del Fragment, asegurando compatibilidad con materiales URP estándar.
+### 🔧 Implementación:
+1. **Shader Graph**:
+   - Propiedad expuesta de textura (**_BaseMap**) conectada al **Base Color**.
+   - Emisión de luz controlada por la propiedad de color **Emission**.
+   - Aplicación del material personalizado a las paredes.
+2. **Iluminación**:
+   - Ubicación estratégica de **Light Probes** en zonas clave (transiciones de luz/sombra, esquinas).
+   - Activación de **Hard Shadows** en luces dinámicas.
 
-Se agregó una propiedad de color para Emission, que permite controlar el brillo que emite el material. 
+### 🎨 Resultado:
+- Las paredes ahora cuentan con un shader visualmente más rico, con control directo sobre la textura y emisión.
+- La iluminación es más realista y optimizada, sin que las luces atraviesen paredes.
 
-Se utilizó un material con este shader personalizado (DungeonWallMat) para reemplazar los materiales anteriores en los MeshRenderer de las paredes.
-
-🎨 Resultado:
-Las paredes ahora cuentan con un shader visualmente más rico, con control directo sobre la textura .
-
-🖼️ [GIF o imagen del resultado próximamente]
+🖼️ *[GIF o imagen del resultado próximamente]*
 
 ### ✔️  [03/06/2025] Integración de Reflection Probe y Light Probe (Escena Dungeon)
 
