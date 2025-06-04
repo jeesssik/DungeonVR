@@ -11,6 +11,8 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 2. ✅ Punto de vista en Primera Persona.
 3. ✅ Modificar objetos o agregar con LOD.
 4. ⏳ Incluir animación de objetos en loop. (Opcional: cambiar de animación según alguna interacción)
+5. ⏳ Agregado de materiales con  Shader Graph
+
 
 
 **Escena 2 (Dungeon)**
@@ -18,6 +20,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 2. ✅ Punto de vista en Primera Persona.
 3. ✅ Modificar objetos o agregar con LOD.
 4. ✅ Incluir animación de objetos en loop. 
+5. ✅ Agregado de materiales con  Shader Graph
 
 ---
 ---
