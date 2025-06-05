@@ -138,7 +138,7 @@ Esto permitió una integración coherente de la iluminación en todo el entorno 
 
 ![GIF de cámara en primera persona](./Screens/correccionIlum.png)
 
---
+---
 
 ### ✔️ [01/06/2025] Agregado de objetos decorativos con LOD 
 Se incorporaron objetos decorativos en la escena (como antorchas, mesas, botellas, etc) 
@@ -148,7 +148,7 @@ A medida que el jugador se aleja de estos objetos, su complejidad geométrica di
 ![LODS en calabozo](./Screens/LODS.png)
 
 
---
+---
 ### ✔️ [30/05/2025] Ajuste de materiales del castillo
 
 
