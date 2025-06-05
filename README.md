@@ -130,8 +130,8 @@ Se incorporaron objetos decorativos en la escena (como antorchas, mesas, botella
 con niveles de detalle (LOD) configurados para optimizar el rendimiento. 
 A medida que el jugador se aleja de estos objetos, su complejidad geométrica disminuye automáticamente, reduciendo el impacto en la carga gráfica sin afectar la calidad visual percibida de cerca. Esta técnica mejora significativamente la performance en zonas con alta densidad de elementos.
 
-![](./Screens/correccionIlum.png)
-![GIF de cámara en primera persona](./Screens/correccionIlum.png)
+![LODS en calabozo](./Screens/LODS.png)
+
 
 --
 ### ✔️ [30/05/2025] Ajuste de materiales del castillo
