@@ -6,7 +6,15 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ## Requisitos del trabajo
 
-**Escena 1 (Exterior)**
+**Escena 1 (Dungeon)**
+1. ✅ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
+2. ✅ Punto de vista en Primera Persona.
+3. ✅ Modificar objetos o agregar con LOD.
+4. ✅ Incluir animación de objetos en loop. 
+5. ✅ Agregado de materiales con  Shader Graph
+
+
+**NUeva escena (Exterior)**
 1. ⏳ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
 2. ✅ Punto de vista en Primera Persona.
 3. ✅ Modificar objetos o agregar con LOD.
@@ -15,12 +23,6 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 
 
-**Escena 2 (Dungeon)**
-1. ✅ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
-2. ✅ Punto de vista en Primera Persona.
-3. ✅ Modificar objetos o agregar con LOD.
-4. ✅ Incluir animación de objetos en loop. 
-5. ✅ Agregado de materiales con  Shader Graph
 
 ---
 ---
@@ -162,15 +164,8 @@ Además, se evitó que la cámara se posicione detrás del jugador o atraviese e
 - Distribución y bake final de Light Probes en escena exterior.
 - Verificar iluminación en todos los sectores de la escena desde el punto de vista del jugador.
 - Implementar cambio de animación por interacción en kla escena del exterior.
-- Revisión de rendimiento final con LODs aplicados.
 
 ---
-
-## 🐱‍👓 Extras
-
-- Centrar el mouse/puntero a la pantalla con el jugador mirando al frente.
-
-
 ---
 
 
