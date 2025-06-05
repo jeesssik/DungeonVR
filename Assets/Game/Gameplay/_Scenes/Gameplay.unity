@@ -37573,6 +37573,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: barrel
       objectReference: {fileID: 0}
+    - target: {fileID: 4248216626687356010, guid: d85e269f99a5c9a448dcef081e754482,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.5009082
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248216626687356010, guid: d85e269f99a5c9a448dcef081e754482,
+        type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.20058267
+      objectReference: {fileID: 0}
     - target: {fileID: 7116409398017681670, guid: d85e269f99a5c9a448dcef081e754482,
         type: 3}
       propertyPath: m_LocalPosition.x

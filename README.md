@@ -137,8 +137,18 @@ Se verificó que todos los objetos estáticos estén correctamente asignados al 
 Esto permitió una integración coherente de la iluminación en todo el entorno horneado, eliminando discrepancias visuales entre paredes contiguas.
 
 ![GIF de cámara en primera persona](./Screens/correccionIlum.png)
+
 --
 
+### ✔️ [01/06/2025] Agregado de objetos decorativos con LOD 
+Se incorporaron objetos decorativos en la escena (como antorchas, mesas, botellas, etc) 
+con niveles de detalle (LOD) configurados para optimizar el rendimiento. 
+A medida que el jugador se aleja de estos objetos, su complejidad geométrica disminuye automáticamente, reduciendo el impacto en la carga gráfica sin afectar la calidad visual percibida de cerca. Esta técnica mejora significativamente la performance en zonas con alta densidad de elementos.
+
+![LODS en calabozo](./Screens/LODS.png)
+
+
+--
 ### ✔️ [30/05/2025] Ajuste de materiales del castillo
 
 
