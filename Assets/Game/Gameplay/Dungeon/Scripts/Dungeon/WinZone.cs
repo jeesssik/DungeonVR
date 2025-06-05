@@ -5,9 +5,7 @@ using UnityEngine;
 public class WinZone : MonoBehaviour
 {
     [SerializeField] private LayerMask playerLayer = default;
-    [SerializeField] private float focusRoomTransitionTime = 0f;
     [SerializeField] private float winAnimationExtraTime = 0f;
-    [SerializeField] private Vector3 offset = Vector3.zero;
 
     [SerializeField] private float radius = 0f;
     [SerializeField] private int spawnCount = 0;
@@ -27,30 +25,39 @@ public class WinZone : MonoBehaviour
     {
         if (Utils.CheckLayerInMask(playerLayer, other.gameObject.layer))
         {
+            DisablePlayerControls(other.gameObject);
             onFinishGame?.Invoke();
             PlayWinAnimation();
         }
     }
 
+    private void DisablePlayerControls(GameObject player)
+    {
+        // Deshabilitar scripts de control del jugador
+        var playerController = player.GetComponent<PlayerController>(); // Cambia "PlayerController" por el script que controla al jugador
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
+
+        // Deshabilitar scripts de control de la cámara (si es necesario)
+        var cameraController = Camera.main.GetComponent<CameraController>(); // Cambia "CameraController" por el script que controla la cámara
+        if (cameraController != null)
+        {
+            cameraController.enabled = false;
+        }
+    }
+
     public void PlayWinAnimation()
     {
-        StartCoroutine(FocusRuneTransitionCoroutine());
+        StartCoroutine(WinAnimationCoroutine());
 
-        IEnumerator FocusRuneTransitionCoroutine()
+        IEnumerator WinAnimationCoroutine()
         {
-            float timer = 0f;
+            // Esperar el tiempo necesario para la animación de victoria
+            yield return new WaitForSeconds(winAnimationExtraTime);
 
-            Transform cam = Camera.main.transform;
-            Vector3 startPosition = cam.position;
-            Vector3 targetPosition = new Vector3(transform.position.x, startPosition.y, transform.position.z) + offset;
-
-            while (timer < focusRoomTransitionTime)
-            {
-                timer += Time.deltaTime;
-                cam.position = Vector3.Lerp(startPosition, targetPosition, timer / focusRoomTransitionTime);
-                yield return new WaitForEndOfFrame();
-            }
-
+            // Generar chibis alrededor de la zona
             for (int i = 0; i < spawnCount; i++)
             {
                 float angle = i * Mathf.PI * 2 / spawnCount;
@@ -68,8 +75,7 @@ public class WinZone : MonoBehaviour
                 yield return new WaitForSeconds(spawnDelay);
             }
 
-            yield return new WaitForSeconds(winAnimationExtraTime);
-
+            // Invocar el evento de fin de animación
             onWinAnimationEnd?.Invoke();
         }
     }
