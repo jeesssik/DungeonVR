@@ -29,6 +29,21 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ## Progreso
 
+
+## ✔️ [05/06/2025] Win Zone:  Gestión de cámara
+
+Win Zone: Secuencia de animación y comportamiento de la cámara
+
+Se modificó el código original en donde la camara se reubicaba de primera persona tercera para una vista de las animaciones de juego ganado.
+Ahora:
+- La cámara permanece fijada al jugador durante la secuencia de animación.
+
+- Se deshabilitan los controles del jugador y de la cámara para evitar interferencias durante la animación.
+
+Todo esto pensado para la adaptación del juego a la vista en VR y evitar Motion Sickness
+
+
+
 ## ✔️ [04/06/2025] Shader Graph personalizado para paredes de la dungeon & Configuración de iluminación optimizada
 
 ### Shader Graph personalizado para paredes
