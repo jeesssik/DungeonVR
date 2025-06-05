@@ -14,7 +14,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 5. ✅ Agregado de materiales con  Shader Graph
 
 
-**NUeva escena (Exterior)**
+**Nueva escena (Exterior)**
 1. ⏳ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
 2. ✅ Punto de vista en Primera Persona.
 3. ✅ Modificar objetos o agregar con LOD.
