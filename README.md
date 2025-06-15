@@ -67,5 +67,5 @@ Preparación de iluminación mixta en escena del menú (horneado + point lights)
 ## 💫Estadísticas 
 
 
+[![wakatime](https://wakatime.com/badge/user/d44045ec-3234-4582-bfeb-dd9364ad9986/project/d32a918f-2fa0-4728-b3b9-6454b752542f.svg)](https://wakatime.com/projects/DungeonVR)
 
-[![wakatime](https://wakatime.com/badge/user/d44045ec-3234-4582-bfeb-dd9364ad9986/project/7489e6a4-0037-4f06-ae7b-254225fff69b.svg)](https://wakatime.com/projects/DungeonVR)
