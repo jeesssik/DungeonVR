@@ -4,34 +4,39 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ---
 
-## Requisitos del trabajo
+## ✅ Objetivos del Trabajo
 
-### Correcciones pedidas
+### 📋 Correcciones pedidas
 
-**Menu del Juego**
+**🧩Menu del Juego**
 
-1. ⏳ Iluminación en pantalla de menu con sombras real time
+1. ✅ Iluminación en pantalla de menu con sombras real time
 
-**Escena 1 (Dungeon)**
+
+**🏰Escena 1 (Dungeon)**
 
 1. ⏳ Poner techo en el dungeon
 2. ⏳ Corregir las arcadas
 3. ⏳ Armar algún objeto reflectante para ver el bake del reflection probe
 4. ⏳ Centrar el punto de vista inicial en el juego
 
+<br>
 
+---
 
-### Nueva entrega
+### 🆕Nueva entrega
+<br>
 
-
-**Nueva escena (Exterior)**
+**🌄Nueva escena (Exterior)**
 1. ⏳ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
 2. ✅ Punto de vista en Primera Persona.
 3. ✅ Modificar objetos o agregar con LOD.
 4. ⏳ Incluir animación de objetos en loop. (Opcional: cambiar de animación según alguna interacción)
 5. ⏳ Agregado de materiales con  Shader Graph
 
-**Refactorización a VR**
+<br>
+
+**🕶️ Refactorización a VR**
 1. ⏳ Instalación de los assets y paquetes necesarios
 2. ⏳ Configuración de inputs y controladores
    2.1 ⏳ Configuración de prefabs de manos y controladores
@@ -48,7 +53,11 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ## Progreso
 
 
-## ✔️ [00/06/2025] 
+### ✔️ [15/06/2025] Refactorizacióon de Menú Inicial
+
+
+Preparación de iluminación mixta en escena del menú (horneado + point lights)      
+
 
 
 
