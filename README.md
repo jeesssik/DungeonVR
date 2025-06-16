@@ -56,7 +56,13 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ### ✔️ [15/06/2025] Refactorizacióon de Menú Inicial
 
 
-Preparación de iluminación mixta en escena del menú (horneado + point lights)      
+- Se refactorizó la escena de menú para ser completamente funcional en VR
+- Se configuraron **luces mixtas (Mixed Point Lights)** colocadas en las velas del menú
+- Se activaron sombras realtime en los objetos de la habitación y el personaje
+- Se revisaron los componentes del All-in-One SDK v77 en Unity 6 para el raycast desde controladores
+- Se solucionaron errores visuales por falta de configuración del Universal Render Pipeline (URP)
+- Se realizaron múltiples pruebas de bake de iluminación en la escena, evaluando los tiempos de procesamiento
+   
 
 
 
