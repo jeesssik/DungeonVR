@@ -12,7 +12,7 @@ public class SceneManagerVR : MonoBehaviour
     // Inicia el juego cargando la escena de juego principal
     public void StartGame()
     {
-        SceneManager.LoadScene("EjemploUI");
+        SceneManager.LoadScene("Exterior");
     }
 
     // Muestra el menú de opciones y oculta el menú principal
