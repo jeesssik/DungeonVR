@@ -52,8 +52,13 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ## Progreso
 
+### ✔️ [14/06/2025] Refactorización de Menú Inicial
 
-### ✔️ [15/06/2025] Refactorizacióon de Menú Inicial
+- Duplicado de prouyecto
+- Instalación de paquete de Meta (A--In-One SDK)
+- Prueba de funcionalidad
+
+### ✔️ [15/06/2025] Refactorización de Menú Inicial
 
 
 - Se refactorizó la escena de menú para ser completamente funcional en VR
@@ -65,7 +70,12 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
    
 
 
+### ✔️ [16/06/2025] Refactorización de Menú Inicial Parte 2
 
+- Optimización de slider de Menú de Opciones para el correcto funcionamiento en VR
+- Sonido ambiente de mení y click en botones
+- Botons de inicio de jego y opciones funcionales
+- Camara rota co controles pero no se permite el desplazamiento del juegador.
 
 ---
 ---
