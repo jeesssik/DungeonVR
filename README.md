@@ -49,23 +49,11 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ## Progreso
 
-### ✔️ [14/06/2025] Refactorización de Menú Inicial
+### ✔️ [17/06/2025] Correcciones pendientes
 
-- Duplicado de prouyecto
-- Instalación de paquete de Meta (A--In-One SDK)
-- Prueba de funcionalidad
-
-### ✔️ [15/06/2025] Refactorización de Menú Inicial
-
-
-- Se refactorizó la escena de menú para ser completamente funcional en VR
-- Se configuraron **luces mixtas (Mixed Point Lights)** colocadas en las velas del menú
-- Se activaron sombras realtime en los objetos de la habitación y el personaje
-- Se revisaron los componentes del All-in-One SDK v77 en Unity 6 para el raycast desde controladores
-- Se solucionaron errores visuales por falta de configuración del Universal Render Pipeline (URP)
-- Se realizaron múltiples pruebas de bake de iluminación en la escena, evaluando los tiempos de procesamiento
-   
-
+- Corrección es texturas de las arcadas
+- Agregado de techo a calabozo
+- Eliminado de la iluminación ambiente
 
 ### ✔️ [16/06/2025] Refactorización de Menú Inicial Parte 2
 
@@ -77,10 +65,25 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Control de volumen en menu de configuración.
 
 
-### ✔️ [17/06/2025] Correcciones pendientes
 
-- Corrección es texturas de las arcadas
-- Agregado de techo a calabozo
+
+
+### ✔️ [15/06/2025] Refactorización de Menú Inicial
+
+
+- Se refactorizó la escena de menú para ser completamente funcional en VR
+- Se configuraron **luces mixtas (Mixed Point Lights)** colocadas en las velas del menú
+- Se activaron sombras realtime en los objetos de la habitación y el personaje
+- Se revisaron los componentes del All-in-One SDK v77 en Unity 6 para el raycast desde controladores
+- Se solucionaron errores visuales por falta de configuración del Universal Render Pipeline (URP)
+- Se realizaron múltiples pruebas de bake de iluminación en la escena, evaluando los tiempos de procesamiento
+   
+### ✔️ [14/06/2025] Refactorización de Menú Inicial
+
+- Duplicado de prouyecto
+- Instalación de paquete de Meta (A--In-One SDK)
+- Prueba de funcionalidad
+
 
 ---
 ---
