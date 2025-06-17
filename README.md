@@ -8,15 +8,12 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ### 📋 Correcciones pedidas
 
-**🧩Menu del Juego**
-
-1. ✅ Iluminación en pantalla de menu con sombras real time
 
 
 **🏰Escena 1 (Dungeon)**
 
 1. ⏳ Poner techo en el dungeon
-2. ⏳ Corregir las arcadas
+2. ✅ Corregir las arcadas
 3. ⏳ Armar algún objeto reflectante para ver el bake del reflection probe
 4. ⏳ Centrar el punto de vista inicial en el juego
 
@@ -37,7 +34,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 <br>
 
 **🕶️ Refactorización a VR**
-1. ⏳ Instalación de los assets y paquetes necesarios
+1. ✅ Instalación de los assets y paquetes necesarios
 2. ⏳ Configuración de inputs y controladores
    2.1 ⏳ Configuración de prefabs de manos y controladores
 3. ⏳ Configurar los objetos interactuables
@@ -78,6 +75,11 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Camara rota con controles pero no se permite el desplazamiento del juegador.
 - Update del menu de control de volúmenes.
 - Control de volumen en menu de configuración.
+
+
+### ✔️ [17/06/2025] Correcciones pendientes
+
+- Corrección es texturas de las arcadas
 
 ---
 ---
