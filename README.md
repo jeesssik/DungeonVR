@@ -55,6 +55,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Agregado de techo a calabozo
 - Eliminado de la iluminación ambiente
 
+
 ### ✔️ [16/06/2025] Refactorización de Menú Inicial Parte 2
 
 - Optimización de slider de Menú de Opciones para el correcto funcionamiento en VR
