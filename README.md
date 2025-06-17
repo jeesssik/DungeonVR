@@ -77,6 +77,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Botons de inicio de jego y opciones funcionales
 - Camara rota con controles pero no se permite el desplazamiento del juegador.
 - Update del menu de control de volúmenes.
+- Control de volumen en menu de configuración.
 
 ---
 ---
