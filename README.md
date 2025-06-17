@@ -52,14 +52,32 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ## Progreso
 
+### ✔️ [14/06/2025] Refactorización de Menú Inicial
 
-### ✔️ [15/06/2025] Refactorizacióon de Menú Inicial
+- Duplicado de prouyecto
+- Instalación de paquete de Meta (A--In-One SDK)
+- Prueba de funcionalidad
+
+### ✔️ [15/06/2025] Refactorización de Menú Inicial
 
 
-Preparación de iluminación mixta en escena del menú (horneado + point lights)      
+- Se refactorizó la escena de menú para ser completamente funcional en VR
+- Se configuraron **luces mixtas (Mixed Point Lights)** colocadas en las velas del menú
+- Se activaron sombras realtime en los objetos de la habitación y el personaje
+- Se revisaron los componentes del All-in-One SDK v77 en Unity 6 para el raycast desde controladores
+- Se solucionaron errores visuales por falta de configuración del Universal Render Pipeline (URP)
+- Se realizaron múltiples pruebas de bake de iluminación en la escena, evaluando los tiempos de procesamiento
+   
 
 
+### ✔️ [16/06/2025] Refactorización de Menú Inicial Parte 2
 
+- Optimización de slider de Menú de Opciones para el correcto funcionamiento en VR
+- Sonido ambiente de mení y click en botones
+- Botons de inicio de jego y opciones funcionales
+- Camara rota con controles pero no se permite el desplazamiento del juegador.
+- Update del menu de control de volúmenes.
+- Control de volumen en menu de configuración.
 
 ---
 ---
@@ -67,5 +85,4 @@ Preparación de iluminación mixta en escena del menú (horneado + point lights)
 ## 💫Estadísticas 
 
 
-[![wakatime](https://wakatime.com/badge/user/d44045ec-3234-4582-bfeb-dd9364ad9986/project/d32a918f-2fa0-4728-b3b9-6454b752542f.svg)](https://wakatime.com/projects/DungeonVR)
-
+[![wakatime](https://wakatime.com/badge/user/d44045ec-3234-4582-bfeb-dd9364ad9986/project/408f508b-ea9c-4e08-adbb-fddcbd8901e8.svg)](https://wakatime.com/projects/Dark%20Dungeon%20VR)
