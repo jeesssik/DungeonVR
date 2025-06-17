@@ -80,6 +80,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ### ✔️ [17/06/2025] Correcciones pendientes
 
 - Corrección es texturas de las arcadas
+- Agregado de techo a calabozo
 
 ---
 ---
