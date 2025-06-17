@@ -12,7 +12,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 **🏰Escena 1 (Dungeon)**
 
-1. ⏳ Poner techo en el dungeon
+1. ✅ Poner techo en el dungeon
 2. ✅ Corregir las arcadas
 3. ⏳ Armar algún objeto reflectante para ver el bake del reflection probe
 4. ⏳ Centrar el punto de vista inicial en el juego
