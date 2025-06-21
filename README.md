@@ -53,6 +53,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Agregado de decoraciones con LODS
 - Agregado del agua a la escena
 - Seteo de límites del escenario
+- Agregado de colliders para permitir el correcto desplazamiento en el mapa
 
 ## No Agua
 ![No Agua](screens/no_agua.png)
@@ -67,6 +68,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Corrección es texturas de las arcadas
 - Agregado de techo a calabozo
 - Eliminado de la iluminación ambiente
+
 
 
 ### ✔️ [16/06/2025] Refactorización de Menú Inicial Parte 2
