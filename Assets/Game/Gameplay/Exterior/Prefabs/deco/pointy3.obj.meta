@@ -3,7 +3,12 @@ guid: 1055ddc2b27ca224d8b3fe3ae03936cb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pointy3Mat
+    second: {fileID: 2100000, guid: 2cb476ad5eb8bd14b8e1756d3ae330f9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
