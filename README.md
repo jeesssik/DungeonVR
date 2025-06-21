@@ -25,11 +25,12 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 <br>
 
 **🌄Nueva escena (Exterior)**
-1. ⏳ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
+1. ✅ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
 2. ✅ Punto de vista en Primera Persona.
 3. ✅ Modificar objetos o agregar con LOD.
 4. ⏳ Incluir animación de objetos en loop. (Opcional: cambiar de animación según alguna interacción)
-5. ⏳ Agregado de materiales con  Shader Graph
+5. ✅ Agregado de materiales con  Shader Graph
+6. ✅ Agregar agua con shader
 
 <br>
 
@@ -48,8 +49,20 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ---
 
 ## Progreso
+### ✔️ [21/06/2025] Armado de escenario exterior
+- Agregado de decoraciones con LODS
+- Agregado del agua a la escena
+- Seteo de límites del escenario
 
-### ✔️ [17/06/2025] Correcciones pendientes
+## No Agua
+![No Agua](screens/no_agua.png)
+
+
+### Agua
+![Agua](screens/agua.png)
+
+
+## ✔️ [17/06/2025] Correcciones pendientes
 
 - Corrección es texturas de las arcadas
 - Agregado de techo a calabozo
