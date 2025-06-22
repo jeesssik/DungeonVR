@@ -54,7 +54,12 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 ### ✔️ [22/06/2025] Avances en escenario exterior
 - Armado de UI diegética, con cambios de mensaje según estado del juego
-- 
+- Mensaje con pista de la misión a resovler controlado por el botón A del control Derecho para visualizar y ocultar.
+![No Agua](screens/buscaEspada.png)
+
+- las pistas son dinámicas en base a zonas con triggers
+
+![No Agua](screens/espadaSI.png)
 
 
 
@@ -64,6 +69,8 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Seteo de límites del escenario
 - Agregado de colliders para permitir el correcto desplazamiento en el mapa
 - Shader y efectos de partículas que destacan a la espada a tomar
+
+![No Agua](screens/shaderEspada.png)
 - Agregado de la camara VR y movimiento en la escena
 - Modificación de rotación de la camara, no snap turn
 
