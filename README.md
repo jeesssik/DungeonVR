@@ -106,10 +106,3 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Prueba de funcionalidad
 
 
----
----
-
-## 💫Estadísticas 
-
-
-[![wakatime](https://wakatime.com/badge/user/d44045ec-3234-4582-bfeb-dd9364ad9986/project/408f508b-ea9c-4e08-adbb-fddcbd8901e8.svg)](https://wakatime.com/projects/Dark%20Dungeon%20VR)
