@@ -58,7 +58,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Agregado de colliders para permitir el correcto desplazamiento en el mapa
 - Shader y efectos de partículas que destacan a la espada a tomar
 - Agregado de la camara VR y movimiento en la escena
-- Modificación de rotación de la camara por Snap Turn Vignette
+- Modificación de rotación de la camara, no snap turn
 
 ## No Agua
 ![No Agua](screens/no_agua.png)
