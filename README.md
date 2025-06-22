@@ -54,6 +54,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Agregado del agua a la escena
 - Seteo de límites del escenario
 - Agregado de colliders para permitir el correcto desplazamiento en el mapa
+- Shader y efectos de partículas que destacan a la espada a tomar
 
 ## No Agua
 ![No Agua](screens/no_agua.png)
