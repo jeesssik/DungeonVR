@@ -57,11 +57,11 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Mensaje con pista de la misión a resovler controlado por el botón A del control Derecho para visualizar y ocultar.
 ![No Agua](./screens/buscaEspada.png)
 
-- las pistas son dinámicas en base a zonas con triggers
+- Las pistas son dinámicas en base a zonas con triggers
 
 ![No Agua](./screens/espadaSI.png)
 
-
+- Visualización de controles
 
 ### ✔️ [21/06/2025] Armado de escenario exterior
 - Agregado de decoraciones con LODS
