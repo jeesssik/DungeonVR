@@ -51,6 +51,13 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ---
 
 ## Progreso
+
+### ✔️ [22/06/2025] Avances en escenario exterior
+- Armado de UI diegética, con cambios de mensaje según estado del juego
+- 
+
+
+
 ### ✔️ [21/06/2025] Armado de escenario exterior
 - Agregado de decoraciones con LODS
 - Agregado del agua a la escena
