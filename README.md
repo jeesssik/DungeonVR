@@ -15,7 +15,8 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 1. ✅ Poner techo en el dungeon
 2. ✅ Corregir las arcadas
 3. ⏳ Armar algún objeto reflectante para ver el bake del reflection probe
-4. ⏳ Centrar el punto de vista inicial en el juego
+4. ✅ Agregado de la vista el primera persona en VR
+5. ⏳ Modificaciones de UI para VR
 
 <br>
 
@@ -31,6 +32,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 4. ⏳ Incluir animación de objetos en loop. (Opcional: cambiar de animación según alguna interacción)
 5. ✅ Agregado de materiales con  Shader Graph
 6. ✅ Agregar agua con shader
+7. ✅ Agregado de la vista el primera persona en VR
 
 <br>
 
@@ -55,6 +57,8 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Seteo de límites del escenario
 - Agregado de colliders para permitir el correcto desplazamiento en el mapa
 - Shader y efectos de partículas que destacan a la espada a tomar
+- Agregado de la camara VR y movimiento en la escena
+- Modificación de rotación de la camara por Snap Turn Vignette
 
 ## No Agua
 ![No Agua](screens/no_agua.png)
