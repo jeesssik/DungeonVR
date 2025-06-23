@@ -66,7 +66,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Al encontrar la espada se habilita el ray interactor en ella y al clickearla desaparece de su lugar de reposo
 - Animacion en loop
 
-![imagen de las luces depués de la modificacion](./Screens/catto.gif)
+![gato animado](./Screens/catto.gif)
 
 
 
@@ -77,7 +77,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Agregado de colliders para permitir el correcto desplazamiento en el mapa
 - Shader y efectos de partículas que destacan a la espada a tomar
 
-![No Agua](./screens/shaderEspada.png)
+
 ![Shadder Espada](./Screens/shaderEspada.png)
 - Agregado de la camara VR y movimiento en la escena
 - Modificación de rotación de la camara, no snap turn
