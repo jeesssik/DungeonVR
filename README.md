@@ -63,6 +63,11 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 - Visualización de controles
 - Al encontrar la espada se habilita el ray interactor en ella y al clickearla desaparece de su lugar de reposo
+- Animacion en loop
+
+![imagen de las luces depués de la modificacion](./Screens/catto.gif)
+
+
 
 ### ✔️ [21/06/2025] Armado de escenario exterior
 - Agregado de decoraciones con LODS
