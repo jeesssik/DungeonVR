@@ -74,6 +74,8 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 - Se creó shader para la barrera magica
 
+- Se actualiza la pista cuando el player obtiene la espada
+
 
 
 
