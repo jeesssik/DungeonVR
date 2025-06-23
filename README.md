@@ -82,8 +82,8 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Modificación de rotación de la camara, no snap turn
 
 ## No Agua
-![No Agua](./screens/no_agua.png)
 
+![iNo agua](./Screens/no_agua.png)
 
 ### Agua
 ![Agua](./screens/agua.png)
