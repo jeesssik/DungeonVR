@@ -56,11 +56,13 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ### ✔️ [22/06/2025] Avances en escenario exterior
 - Armado de UI diegética, con cambios de mensaje según estado del juego
 - Mensaje con pista de la misión a resovler controlado por el botón A del control Derecho para visualizar y ocultar.
-![No Agua](./screens/buscaEspada.png)
+
+![guia a espada](./Screens/buscaEspada.png)
 
 - Las pistas son dinámicas en base a zonas con triggers
 
-![No Agua](./screens/espadaSI.png)
+
+![pista espada](./Screens/espadaSI.png)
 
 - Visualización de controles
 - Al encontrar la espada se habilita el ray interactor en ella y al clickearla desaparece de su lugar de reposo
