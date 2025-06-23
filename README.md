@@ -54,23 +54,31 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ## Progreso
 
 ### ✔️ [23/06/2025]Implementación de barrera mágica condicional
--Se agregó un GameObject con efecto de barrera mágica, que bloquea el acceso al castillo si el jugador no posee la espada.
+Se implementó un sistema de barrera mágica que impide el paso al jugador si no ha recolectado la espada. El flujo funciona así:
 
-    El objeto contiene dos colliders:
+Pickup de Espada
 
-    Un BoxCollider sólido que bloquea físicamente el paso (Is Trigger ❌).
+Se configuró un objeto espada con un script (SwordPickup.cs) que define si el jugador tiene o no la espada (hasSword).
 
-    Un hijo con un BoxCollider marcado como trigger (Is Trigger ✅) que detecta al jugador e invoca un mensaje flotante si intenta pasar sin tener la espada.
+El jugador puede seleccionar la espada usando el ray interactor del control derecho (visualizado con el bloque ISDK_RayInteraction).
 
-    Se creó el script MagicBarrierController.cs, que:
+Trigger de la Barrera
 
-    Muestra un mensaje tipo acertijo (“El sello ancestral impide el paso.”) al tocar la barrera sin la espada.
+Se colocó un TriggerZone frente a la barrera que activa la lógica del script MagicBarrierController.cs.
 
-    Verifica si el jugador ha recogido la espada mediante referencia a un script SwordPickup.cs con una variable pública booleana.
+Este script verifica si el jugador tiene la espada:
 
-    Si el jugador tiene la espada, la barrera se desactiva automáticamente al contacto, permitiendo el paso.
+Si no la tiene, muestra un mensaje indicando que el paso está bloqueado.
 
-    Se mantuvo la lógica del mensaje anterior (pista de los tótems) y se prioriza el nuevo mensaje solo mientras se colisiona con la barrera.
+Si la tiene, la barrera se desvanece gradualmente usando interpolación de alpha en el material, y luego se desactiva el GameObject completo (barrierRoot), permitiendo el paso.
+
+Jerarquía
+
+Para evitar errores, se configuró la barrera como un GameObject padre (barrierRoot, por ejemplo statue_1_wall (1)) que contiene el trigger y los elementos visuales de la barrera.
+
+Prevención de errores
+
+Se validó en tiempo de ejecución que todos los componentes estén correctamente asignados, evitando NullReferenceException.
 
 - Se creó shader para la barrera magica
 
