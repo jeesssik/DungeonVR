@@ -78,6 +78,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Shader y efectos de partículas que destacan a la espada a tomar
 
 ![No Agua](./screens/shaderEspada.png)
+![Shadder Espada](./Screens/shaderEspada.png)
 - Agregado de la camara VR y movimiento en la escena
 - Modificación de rotación de la camara, no snap turn
 
@@ -86,8 +87,8 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ![iNo agua](./Screens/no_agua.png)
 
 ### Agua
-![Agua](./screens/agua.png)
 
+![Agua](./Screens/agua.png)
 
 ## ✔️ [17/06/2025] Correcciones pendientes
 
