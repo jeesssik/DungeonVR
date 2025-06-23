@@ -54,23 +54,27 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ## Progreso
 
 ### ✔️ [23/06/2025]Implementación de barrera mágica condicional
-Se agregó un GameObject con efecto de barrera mágica, que bloquea el acceso al castillo si el jugador no posee la espada.
+-Se agregó un GameObject con efecto de barrera mágica, que bloquea el acceso al castillo si el jugador no posee la espada.
 
-El objeto contiene dos colliders:
+    El objeto contiene dos colliders:
 
-Un BoxCollider sólido que bloquea físicamente el paso (Is Trigger ❌).
+    Un BoxCollider sólido que bloquea físicamente el paso (Is Trigger ❌).
 
-Un hijo con un BoxCollider marcado como trigger (Is Trigger ✅) que detecta al jugador e invoca un mensaje flotante si intenta pasar sin tener la espada.
+    Un hijo con un BoxCollider marcado como trigger (Is Trigger ✅) que detecta al jugador e invoca un mensaje flotante si intenta pasar sin tener la espada.
 
-Se creó el script MagicBarrierController.cs, que:
+    Se creó el script MagicBarrierController.cs, que:
 
-Muestra un mensaje tipo acertijo (“El sello ancestral impide el paso.”) al tocar la barrera sin la espada.
+    Muestra un mensaje tipo acertijo (“El sello ancestral impide el paso.”) al tocar la barrera sin la espada.
 
-Verifica si el jugador ha recogido la espada mediante referencia a un script SwordPickup.cs con una variable pública booleana.
+    Verifica si el jugador ha recogido la espada mediante referencia a un script SwordPickup.cs con una variable pública booleana.
 
-Si el jugador tiene la espada, la barrera se desactiva automáticamente al contacto, permitiendo el paso.
+    Si el jugador tiene la espada, la barrera se desactiva automáticamente al contacto, permitiendo el paso.
 
-Se mantuvo la lógica del mensaje anterior (pista de los tótems) y se prioriza el nuevo mensaje solo mientras se colisiona con la barrera.
+    Se mantuvo la lógica del mensaje anterior (pista de los tótems) y se prioriza el nuevo mensaje solo mientras se colisiona con la barrera.
+
+- Se creó shader para la barrera magica
+
+
 
 
 ### ✔️ [22/06/2025] Avances en escenario exterior
