@@ -17,6 +17,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 3. ⏳ Armar algún objeto reflectante para ver el bake del reflection probe
 4. ✅ Agregado de la vista el primera persona en VR
 5. ⏳ Modificaciones de UI para VR
+6. ⏳ Adaptación de player a VR
 
 <br>
 
@@ -29,7 +30,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 1. ✅ Iluminación baked y luces de tipo mixed y/o real time según el criterio para cada caso.
 2. ✅ Punto de vista en Primera Persona.
 3. ✅ Modificar objetos o agregar con LOD.
-4. ⏳ Incluir animación de objetos en loop. (Opcional: cambiar de animación según alguna interacción)
+4. ✅ Incluir animación de objetos en loop. (Opcional: cambiar de animación según alguna interacción)
 5. ✅ Agregado de materiales con  Shader Graph
 6. ✅ Agregar agua con shader
 7. ✅ Agregado de la vista el primera persona en VR
@@ -38,10 +39,10 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 **🕶️ Refactorización a VR**
 1. ✅ Instalación de los assets y paquetes necesarios
-2. ⏳ Configuración de inputs y controladores
-   2.1 ⏳ Configuración de prefabs de manos y controladores
-3. ⏳ Configurar los objetos interactuables
-4. ⏳ Configurar teleport o movimiento libre si es necesario
+2. ✅ Configuración de inputs y controladores
+3. ✅ Configuración de prefabs de  controladores
+4. ✅ Configurar los objetos interactuables
+5. ✅ Configurar teleport o movimiento libre si es necesario
 
 
 
