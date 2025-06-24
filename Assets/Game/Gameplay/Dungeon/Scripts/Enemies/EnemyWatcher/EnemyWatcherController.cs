@@ -7,7 +7,7 @@ public class EnemyWatcherController : Enemy
     [SerializeField] float _attackRange = 2f;
     [SerializeField] float _idleDuration = 3f;
     [SerializeField] List<Transform> _patrolPoints;
-    
+
 
     private int _currentPatrolIndex = -1;
     [SerializeField] float _idleTimeout = 3f;
@@ -32,7 +32,7 @@ public class EnemyWatcherController : Enemy
     public bool IsPlayerInAttackRange() => Vector3.Distance(transform.position, _player.position) <= _attackRange;
     public bool IsNearPosition(Vector3 targetPosition) => Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(targetPosition.x, targetPosition.z)) <= 0.2f;
 
-        
+
     public Transform GetNextPatrolPoint()
     {
         if (!HasSufficientPatrolPoints())
@@ -82,5 +82,7 @@ public class EnemyWatcherController : Enemy
     {
         _hitAttackCollider.enabled = false;
         IsAttacking = false;
-    }
+    } 
+
+    
 }
