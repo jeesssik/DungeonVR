@@ -54,6 +54,8 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ## Progreso
 ### ✔️ [24/06/2025] Refactorización de escena de Dungeon
 - Cambio de camara y controles de movimiento del player
+- Asignación de espada al control derecho
+
 
 
 ### ✔️ [23/06/2025]Implementación de barrera mágica condicional
