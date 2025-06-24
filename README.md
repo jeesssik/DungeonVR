@@ -17,7 +17,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 3. ⏳ Armar algún objeto reflectante para ver el bake del reflection probe
 4. ✅ Agregado de la vista el primera persona en VR
 5. ⏳ Modificaciones de UI para VR
-6. ⏳ Adaptación de player a VR
+6. ✅ Adaptación de player a VR
 
 <br>
 
