@@ -93,12 +93,12 @@ public class PlayerController : MonoBehaviour, IDamagable
     {
         inputController.UpdateInputFSM(status ? FSM_INPUT.ONLY_UI : inputController.CurrentInputState, false);
     }
-
+/*
     public void DisableInput()
     {
         inputController.UpdateInputFSM(FSM_INPUT.ONLY_UI);
     }
-
+*/
     public void PlayVictoryAnimation()
     {
         anim.Play("Victory");

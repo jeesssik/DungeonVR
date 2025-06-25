@@ -105,7 +105,7 @@ public class GameplayUI : MonoBehaviour
 {
     [Header("HUD Settings")]
     [SerializeField] private Slider playerHealthSlider = null;
-
+    [SerializeField] private GameObject playerHUD = null;
     [Header("Pause Settings")]
     [SerializeField] private GameObject pausePanel = null;
     [SerializeField] private Button resumeBtn = null;
@@ -119,7 +119,7 @@ public class GameplayUI : MonoBehaviour
     [Header("Win Settings")]
     [SerializeField] private GameObject winPanel = null;
     [SerializeField] private Button winBackToMenuBtn = null;
-     [SerializeField] private VRPlayerLogic playerLogic = null; // Referencia al jugador
+    [SerializeField] private VRPlayerLogic playerLogic = null; // Referencia al jugador
 
 
     private Action<bool> onToggleTimeScale = null;
@@ -163,11 +163,13 @@ public class GameplayUI : MonoBehaviour
     }
 
     public void OpenWinPanel()
-    {
-        winPanel.SetActive(true);
-    }
+{
+    if (playerHUD != null)
+        playerHUD.SetActive(false); // Oculta HUD
 
-     public void UpdatePlayerHealth(int currentLives, int maxLives)
+    winPanel.SetActive(true);      // Muestra panel de Win
+}
+    public void UpdatePlayerHealth(int currentLives, int maxLives)
     {
         if (playerHealthSlider != null)
         {
@@ -199,7 +201,7 @@ public class GameplayUI : MonoBehaviour
         GameManager.Instance.AudioManager.ToggleMusic(true);
     }
 
- private void OnDestroy()
+    private void OnDestroy()
     {
         // Desuscribirse del evento para evitar errores
         if (playerLogic != null)

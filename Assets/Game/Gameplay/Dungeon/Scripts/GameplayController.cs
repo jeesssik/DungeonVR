@@ -32,8 +32,8 @@ public class GameplayController : MonoBehaviour
 
     private void VictoryPlayer()
     {
-        playerController.DisableInput();
-        playerController.PlayVictoryAnimation();
+        //playerController.DisableInput();
+        //playerController.PlayVictoryAnimation();
 
         EnemyManager.Instance.OnPlayerVictory();
         GameManager.Instance.AudioManager.StopCurrentMusic(
