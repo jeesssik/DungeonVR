@@ -14,9 +14,8 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 
 1. ✅ Poner techo en el dungeon
 2. ✅ Corregir las arcadas
-3. ⏳ Armar algún objeto reflectante para ver el bake del reflection probe
 4. ✅ Agregado de la vista el primera persona en VR
-5. ⏳ Modificaciones de UI para VR
+5. ✅ Modificaciones de UI para VR
 6. ✅ Adaptación de player a VR
 
 <br>
@@ -54,7 +53,11 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ## Progreso
 ### ✔️ [24/06/2025] Refactorización de escena de Dungeon
 - Cambio de camara y controles de movimiento del player
-- Asignación de espada al control derecho
+- Asignación de espada al control derecho.
+
+![control espada](./Screens/esapda.gif)
+
+- Enemigos reciben daño y se ve reflejado en su barra de vida (lo mismo pasa con el jugador)
 
 
 
@@ -86,6 +89,8 @@ Prevención de errores
 Se validó en tiempo de ejecución que todos los componentes estén correctamente asignados, evitando NullReferenceException.
 
 - Se creó shader para la barrera magica
+
+![guia a espada](./Screens/shaderMagicBarrier.png)
 
 - Se actualiza la pista cuando el player obtiene la espada
 
