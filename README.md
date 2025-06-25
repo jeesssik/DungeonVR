@@ -55,7 +55,7 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 - Cambio de camara y controles de movimiento del player
 - Asignación de espada al control derecho.
 
-![control espada](./Screens/esapda.gif)
+![control espada](./Screens/espada.gif)
 
 - Enemigos reciben daño y se ve reflejado en su barra de vida (lo mismo pasa con el jugador)
 
