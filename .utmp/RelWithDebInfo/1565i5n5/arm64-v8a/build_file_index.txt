@@ -1,0 +1,2 @@
+C:\Users\jesic\OneDrive\Documentos\Prog 3\DungeonVR\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\jesic\OneDrive\Documentos\Prog 3\DungeonVR\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
