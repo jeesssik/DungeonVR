@@ -148,7 +148,7 @@ Se validó en tiempo de ejecución que todos los componentes estén correctament
 
 - Optimización de slider de Menú de Opciones para el correcto funcionamiento en VR
 - Sonido ambiente de mení y click en botones
-- Botons de inicio de jego y opciones funcionales
+- Botons de inicio de juego y opciones funcionales
 - Camara rota con controles pero no se permite el desplazamiento del juegador.
 - Update del menu de control de volúmenes.
 - Control de volumen en menu de configuración.
