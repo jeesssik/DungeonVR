@@ -51,6 +51,13 @@ Este proyecto es parte de un trabajo práctico que tiene como objetivo integrar 
 ---
 
 ## Progreso
+
+### ✔️ [09/07/2025] Correcciones
+Correcciones de alineado de paredes
+COrrección de point lights
+
+
+
 ### ✔️ [24/06/2025] Refactorización de escena de Dungeon
 - Cambio de camara y controles de movimiento del player
 - Asignación de espada al control derecho.
